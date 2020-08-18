@@ -1,0 +1,72 @@
+.Form {
+  display: grid;
+  grid-template-columns: 33.3vw 33.3vw 33.4vw;
+
+  border-style: solid black;
+  border-style: solid black;
+  background-color: honeydew;
+  padding-top: 70px;
+  min-height: 100vh;
+}
+
+.stylingformat section {
+  background-color: rgb(233, 230, 224);
+  border: 2px;
+  width: "17%";
+  height: "10%";
+  text-align: center;
+  margin-right: 20px;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.stylingformat h2 {
+  background-color: rgb(233, 230, 224);
+  font-style: italic;
+  font-weight: 500;
+  font-size: inherit;
+  padding-top: 8px;
+}
+.stylingformat p {
+  background-color: rgb(233, 230, 224);
+  font-style: italic;
+  font-weight: 300;
+  font-size: inherit;
+  padding-top: 8px;
+}
+
+.Bulletin button {
+  background-color: orange;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  bottom: 10%;
+}
+.Bulletin button:hover {
+  background-color: hotpink;
+}
+.buttongrid {
+  display: grid;
+  grid-template-columns: 2fr 2fr;
+  column-gap: 20px;
+  justify-items: center;
+  justify-items: center;
+  text-align: center;
+  left: 50%;
+}
+
+.NoteInput button {
+  background-color: orange;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.NoteInput button:hover {
+  background-color: hotpink;
+}
+.NoteInput input {
+  padding: 10px;
+  border-radius: 10px;
+  justify-content: space-between;
+  margin: 3px;
+}

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
-import css from "./colors.module.css";
+import css from "./Navigation.module.css";
 
 function NavBar() {
   const [options, setOptions] = useState(false);
@@ -14,43 +14,56 @@ function NavBar() {
   }
 
   return (
-    <div className={css.grid2}>
-      <div className={css.formatting}>
-        <button>
-          <Link to="/Homepage"></Link> Dashboard{" "}
-        </button>
+    <div className={css.NavigationComponent}>
+      <section>
+        <img
+          src={require("../Assets/Musify Logo.png")}
+          width={150}
+          height={100}
+        />
+      </section>
+      <div>
+        <Link to="/Homepage"></Link> Dashboard{" "}
       </div>
-      <div className={css.formatting}>
-        <button onClick={displayOptions}> Options</button>
+      <div>
+        <li>Discounts </li>
       </div>
-      <div></div>
-      {options ? (
-        <div className={css.formatting}>
-          <Link to="/About">
-            <button className={css.NavLinks} onClick={displayOptions}>
-              About
-            </button>
-          </Link>
-          <Link to="/Homepage">
-            <button className={css.NavLinks} onClick={displayOptions}>
-              Homepage
-            </button>
-          </Link>
+      <div>
+        <li>Terms & Conditions</li>
+      </div>
+      <div>
+        <li onClick={displayOptions}>Options</li>
 
-          <Link to="/FoodSection">
-            <button className={css.NavLinks} onClick={displayOptions}>
-              Food Products
-            </button>
-          </Link>
-          <Link to="/Sales & Discount">
-            <button className={css.NavLinks} onClick={displayOptions}>
-              Sales & Discount
-            </button>
-          </Link>
-        </div>
-      ) : (
-        <p></p>
-      )}
+        {options ? (
+          <div>
+            <ul>
+              <Link to="/About">
+                <li className={css.NavLinks} onClick={displayOptions}>
+                  About
+                </li>
+              </Link>
+              <Link to="/Homepage">
+                <li className={css.NavLinks} onClick={displayOptions}>
+                  Homepage
+                </li>
+              </Link>
+
+              <Link to="/MusicPlaylist">
+                <li className={css.NavLinks} onClick={displayOptions}>
+                  My PlayList
+                </li>
+              </Link>
+              <Link to="/Sales & Discount">
+                <li className={css.NavLinks} onClick={displayOptions}>
+                  Sales & Discount
+                </li>
+              </Link>
+            </ul>
+          </div>
+        ) : (
+          <p></p>
+        )}
+      </div>
     </div>
   );
 }

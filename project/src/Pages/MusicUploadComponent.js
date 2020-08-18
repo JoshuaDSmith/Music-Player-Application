@@ -1,6 +1,6 @@
 import React, { useState } from "react";
+import css from "./MusicComponent.module.css";
 
-import axios, { post } from "axios";
 var nodemailer = require("nodemailer");
 
 export default function Picture() {
@@ -46,7 +46,7 @@ export default function Picture() {
             //Changing data to blob serves up an empty object to my server
           };
 
-          const response = await fetch("http://localhost:3005/SongDB", options);
+          const response = await fetch("http://localhost:3006/SongDB", options);
           console.log(response);
           return response;
         } catch (err) {
@@ -59,15 +59,20 @@ export default function Picture() {
   }
 
   return (
-    <div>
-      <input id="audio" type="file" onChange={AudioChecker} />
-      <button onClick={displayMusic}> Upload Tracks</button>
+    <div className={css.MusicComponent}>
       <div>
+        <label class="custom-file-upload">
+          <input type="file" onChange={AudioChecker} />
+          <button onClick={displayMusic}> Upload Track</button>
+        </label>
+      </div>
+
+      <div className={css.mappedOptions}>
         {Music.map((file, index) => {
           return (
             <section key={index} id={index}>
               {" "}
-              <p>{file.name}</p>
+              <h1>{file.name}</h1>
               <audio
                 src={URL.createObjectURL(file)}
                 controls

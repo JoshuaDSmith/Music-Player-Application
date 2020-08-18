@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import css from "./colors.module.css";
-import Picture from "./MusicUploadComponent";
+import css from "./ListLogic.module.css";
+import MusicComponent from "./MusicUploadComponent";
+
 function App(props) {
   const [display, setDisplay] = useState([]);
   const [variable, setVariable] = useState({});
@@ -24,7 +25,7 @@ function App(props) {
 
   async function handleSubmit(event) {
     event.preventDefault();
-    // await props.onAdd(note);
+    await props.onAdd(note);
 
     const options = {
       method: "POST",
@@ -36,7 +37,7 @@ function App(props) {
     };
 
     const response = await fetch(
-      "http://localhost:3003/bulletinboard",
+      "http://localhost:3005/bulletinboard",
       options
     );
     if (response.ok) {
@@ -60,7 +61,7 @@ function App(props) {
       setTruth(false);
     }
 
-    const res = await fetch("http://localhost:3003/Notes");
+    const res = await fetch("http://localhost:3005/Notes");
     const data = await res.json();
 
     setDisplay(data);
@@ -86,83 +87,61 @@ function App(props) {
 
   return (
     <div className={css.Form}>
-      <div className={css.grid}>
-        <div style={{ borderStyle: "dotted" }}>
-          <button
-            onClick={getWeather}
-            style={{
-              borderStyle: "dotted",
-              width: "40%",
-              height: "20%",
-              alignSelf: "center",
-              justifyContent: "center",
-            }}
-          >
-            {" "}
-            Get My location
+      <div>
+        <MusicComponent />
+      </div>
+      <div className={css.ImageBorder}>
+        <form className={css.NoteInput}>
+          <input
+            name="title"
+            onChange={handleChange}
+            value={note.title}
+            placeholder="Title"
+          />
+          <input
+            name="content"
+            onChange={handleChange}
+            value={note.content}
+            placeholder="add note"
+          />
+          <button className={css.review} onClick={handleSubmit}>
+            ADD COMMENT
           </button>
-          <Picture />
-        </div>
-        <div className={css.ImageBorder}>
-          <div className={css.background}></div>
-        </div>
-        <div className={css.style2} style={{ borderStyle: "dotted" }}>
+        </form>
+      </div>
+      <div className={css.Bulletin}>
+        <div className={css.buttongrid}>
           <button style={{ alignItems: "center" }} onClick={getData}>
-            {" "}
             Showdb history
           </button>
+          <button style={{ alignItems: "center" }}> Delete All Notes</button>
+        </div>
+        {truth ? (
+          <div>
+            <div className={css.stylingformat}>
+              {display.slice(0, 5).map((display, index) => {
+                return (
+                  <section key={index} id={index} className={css.inputFielding}>
+                    <h2>{display.title}</h2>
+                    <p>{display.content}</p>
 
-          {truth ? (
-            <div className={css.bulletinboard}>
-              <div className={css.stylingformat}>
-                {display.slice(0, 5).map((display, index) => {
-                  return (
-                    <section
-                      key={index}
-                      id={index}
-                      className={css.inputFielding}
+                    <button
+                      onClick={(e) => {
+                        setVariable(display);
+                        return e.preventDefault(), Posting();
+                      }}
                     >
-                      <h2>{display.title}</h2>
-                      <p>{display.content}</p>
-
-                      <button
-                        onClick={(e) => {
-                          setVariable(display);
-                          return e.preventDefault(), Posting();
-                        }}
-                      >
-                        {" "}
-                        delete{" "}
-                      </button>
-                    </section>
-                  );
-                })}
-              </div>
+                      {" "}
+                      delete{" "}
+                    </button>
+                  </section>
+                );
+              })}
             </div>
-          ) : (
-            <div></div>
-          )}
-        </div>
-
-        <div style={{ borderStyle: "dotted" }}>
-          <form className={css.form}>
-            <input
-              name="title"
-              onChange={handleChange}
-              value={note.title}
-              placeholder="Title"
-            />
-            <input
-              name="content"
-              onChange={handleChange}
-              value={note.content}
-              placeholder="add note"
-            />
-            <button className={css.review} onClick={handleSubmit}>
-              ADD COMMENT
-            </button>
-          </form>
-        </div>
+          </div>
+        ) : (
+          <div></div>
+        )}
       </div>
     </div>
   );

@@ -1,0 +1,74 @@
+.MusicComponent {
+  position: relative;
+  width: 100em;
+}
+.MusicComponent div {
+  justify-content: center;
+  align-content: center;
+}
+
+.MusicComponent button {
+  background-color: orange;
+  border-radius: 10px;
+  padding: 10px;
+  padding-bottom: 10px;
+  height: 5vh;
+  position: relative;
+  bottom: 8%;
+  border-width: 0;
+}
+
+.MusicComponent button:hover {
+  background-color: rgb(240, 15, 120);
+}
+
+.MusicComponent input[type="file"] {
+}
+.MusicComponent h1 {
+  font-weight: 300;
+  left: 10%;
+  position: relative;
+}
+.MusicComponent label {
+  background-color: orange;
+  border-radius: 20px;
+  padding: 12px;
+  border-style: solid;
+}
+
+.renderedCard {
+  background-color: darkcyan;
+  width: 50vw;
+  justify-self: center;
+  justify-items: center;
+  align-items: center;
+  position: relative;
+  left: 25vw;
+  border-radius: 10px;
+  box-shadow: 5px 10px 10px #888888;
+}
+
+.renderedCard h2 {
+  text-align: center;
+  font-weight: 300;
+}
+.renderedCard h1 {
+  text-align: center;
+  font-weight: 300;
+}
+.renderedCard p {
+  text-align: end;
+  padding-right: 10px;
+  font-weight: 300;
+}
+.audio {
+  position: relative;
+
+  padding-bottom: 10px;
+}
+
+.card {
+  background-color: red;
+  width: 400px;
+  height: 100px;
+}

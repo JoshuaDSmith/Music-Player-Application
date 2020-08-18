@@ -1,0 +1,41 @@
+.NoteComponent {
+  background-color: honeydew;
+  min-height: 100vh;
+}
+.backgroundColor {
+  background-color: cyan;
+  min-height: 100vh;
+}
+
+.gridFormat {
+  display: grid;
+  grid-template-columns: 2fr 2fr 2fr;
+}
+
+.inputField {
+  background-color: rgb(233, 230, 224);
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.inputField h1 {
+  font-weight: 500;
+}
+.inputField p {
+  background-color: rgb(233, 230, 224);
+  font-style: italic;
+  font-weight: 300;
+}
+
+.inputField button {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: orange;
+}
+
+.gridLayout {
+  display: grid;
+  row-gap: 10px;
+  grid-template-columns: repeat(5, 300px);
+  grid-template-rows: repeat(3, 100px);
+}

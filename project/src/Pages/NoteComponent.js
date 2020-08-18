@@ -1,5 +1,5 @@
 import React from "react";
-import css from "./colors.module.css";
+import css from "./AboutSection.module.css";
 
 function Note(props) {
   async function onDelete() {
@@ -30,10 +30,12 @@ function Note(props) {
   }
 
   return (
-    <div className={css.inputField}>
-      <h1>{props.title}</h1>
-      <p> {props.content}</p>
-      <button onClick={onDelete}> Delete record</button>
+    <div className={css.gridFormat}>
+      <div className={css.inputField}>
+        <h1>Note Title: {props.title}</h1>
+        <p> {props.content}</p>
+        <button onClick={onDelete}> Delete record</button>
+      </div>
     </div>
   );
 }

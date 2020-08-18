@@ -1,12 +1,12 @@
 import React, { useState } from "react";
-import css from "./colors.module.css";
+import css from "./AboutSection.module.css";
 import Selfies from "./dataselfie";
 import ListLogic from "./ListLogic.js";
 import Note from "./NoteComponent.js";
 
 function App() {
   const [notes, setNotes] = useState([]);
-  let [player, setPlayer] = useState([]);
+  let [Musicplayer, setMusicPlayer] = useState([]);
 
   function addNote(note) {
     setNotes((prevNotes) => {
@@ -39,46 +39,48 @@ function App() {
       body: JSON.stringify(deleteRequest),
     };
 
-    const response = fetch("http://localhost:3003/delete", options);
+    const response = fetch("http://localhost:3005/delete", options);
     console.log("This one works");
-    return response.json();
+    return response;
   }
 
   async function displayAudio() {
     const response = await fetch("http://localhost:3005/SoundTrack");
     let data = await response.json();
-    setPlayer([data[0]]);
+    setMusicPlayer([data[0]]);
     console.log(data[0]);
   }
 
   return (
-    <div className={css.Moveup}>
-      {/* <Selfies /> */}
-      <button onClick={displayAudio}>"click for item"</button>
+    <div className={css.NoteComponent}>
       <ListLogic onAdd={addNote} onDelete={nowDelete} />
-      {notes.map((noteItem, index) => {
-        return (
-          <Note
-            key={index}
-            id={index}
-            className={css.inputField}
-            title={noteItem.title}
-            content={noteItem.content}
-            onDelete={deleteNote}
-          />
-        );
-      })}
+      <div className={css.gridLayout}>
+        {notes.map((noteItem, index) => {
+          return (
+            <Note
+              key={index}
+              id={index}
+              className={css.inputField}
+              title={noteItem.title}
+              content={noteItem.content}
+              onDelete={deleteNote}
+            />
+          );
+        })}
+      </div>
       <div>
-        {player.map((playerItem, index) => {
+        {Musicplayer.map((playerItem, index) => {
           return (
             <section key={index}>
-              <h1>{playerItem.title}</h1>
+              <h2>{console.log(index)}</h2>
+              <h2>{playerItem.title}</h2>
               {console.log(playerItem)}
               <audio controls type="audio/mp3/mpeg/ogg" />
             </section>
           );
         })}
       </div>
+      <button onClick={displayAudio}>"click for item"</button>
     </div>
   );
 }
